@@ -81,7 +81,7 @@
 <!--Product-->
 <div class="row" itemscope itemtype="http://schema.org/Product">
   <!--Images-->
-  <div class="col-xs-7 product-image">
+  <div class="col-sm-7 col-xs-12 product-image">
     {% assign jkimages = images | jkimages: 64, 380 %}
     {% if jkimages %}
       {{ jkimages }}
@@ -130,7 +130,7 @@
   </div>
   
   <!--Cost block-->
-  <div class="col-xs-5">
+  <div class="col-sm-5 col-xs-12">
     
     {% if manufacturer %}
     <!--Manufacturer-->

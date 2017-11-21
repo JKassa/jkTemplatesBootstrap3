@@ -55,7 +55,7 @@
 {% endcapture %}
 
 <div class="row">
-  <div class="col-xs-7">
+  <div class="col-sm-7">
     {% if user_guest %}
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
@@ -82,7 +82,7 @@
     {{ form }}
     {% endif %}
   </div>
-  <div class="col-xs-5">
+  <div class="col-sm-5">
     <!--Order-->
     {{ order }}
   </div>

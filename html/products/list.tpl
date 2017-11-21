@@ -239,7 +239,7 @@
           {% if product.cart_disabled %}
           <span class="btn btn-sm btn-primary disabled" title="{{ product.cart_title }}">
             <span class="glyphicon glyphicon-shopping-cart"></span>
-            {{ cart_btn_text }}
+            {{ product.cart_text }}
           </span>
           {% else %}
           <a href="#" data-click="to-cart" data-id="{{ product.id }}" class="btn btn-sm btn-primary" title="{{ product.cart_title }}">
