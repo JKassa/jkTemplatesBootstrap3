@@ -1,7 +1,7 @@
 <div class="row block-products">
   <ul class="thumbnails list-unstyled">
     {% for product in products %}
-    <li class="col-md-{{ col_xs }} col-sm-{{ col_sm }} col-xs-12" itemscope itemtype="http://schema.org/Product">
+    <li class="col-xs-12 col-sm-6 col-md-{{ col_md }}" itemscope itemtype="http://schema.org/Product">
       <div class="over-wraper">
         <div class="thumbnail over-wraper-long">
           <div class="product-image">
@@ -61,7 +61,7 @@
             
             <!--Quick view-->
             {% capture selector_quick_view %}jk-quick_view-{{ product.id }}{% endcapture %}
-            <div class="quick-view">
+            <div class="quick-view hidden-xs">
               <a href="#" data-click="show-modal" data-id="{{ selector_quick_view }}" data-src="{{ product.quick_url }}" class="btn btn-default jk-quick_view" title="{{ 'sprintf' | jtext: 'COM_JKASSA_QUICK_VIEW_TITLE', product.name }}">
                 <span class="glyphicon glyphicon-zoom-in"></span>
                 {{ '_' | jtext: 'COM_JKASSA_QUICK_VIEW' }}
@@ -172,11 +172,11 @@
             
             {% if product.cart_disabled != 'false' and show_quantity %}
             <!--Quantity-->
-            <div class="input-group qty-product m-t-10 m-b-0 col-xs-5">
+            <div class="input-group qty-product m-t-10 m-b-0 col-xs-4 col-sm-6">
               <span class="input-group-btn">
                 <a href="javascript:;" class="btn btn-default btn-sm" type="button" data-click="qty-minus" data-id="{{ product.id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_BTN' }}">&minus;</a>
               </span>
-              <input type="text" value="{{ product.limit }}" data-limit="{{ product.limit }}" data-maxlimit="{{ product.maxlimit }}" class="form-control input-sm text-center" name="qty-product-{{ product.id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_TITLE' }}">
+              <input type="text" value="{{ product.limit }}" data-limit="{{ product.limit }}" data-maxlimit="{{ product.maxlimit }}" class="form-control input-sm text-center mw-45" name="qty-product-{{ product.id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_TITLE' }}">
               <span class="input-group-btn">
                 <a href="javascript:;" class="btn btn-default btn-sm" type="button" data-click="qty-plus" data-id="{{ product.id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_BTN' }}">+</a>
               </span>
@@ -249,7 +249,7 @@
     
     {% if moreProducts %}
 	<!--More products-->
-    <li class="col-xs-{{ col_xs }}">
+    <li class="col-xs-12 col-sm-6 col-md-{{ col_md }}">
       <div class="over-wraper">
         <div class="thumbnail over-wraper-long crossblock">
           <a href="#" data-click="more-products" data-more="{{ moreProducts }}" data-limit="{{ selectedLimit }}">

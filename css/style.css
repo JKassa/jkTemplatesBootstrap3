@@ -402,6 +402,7 @@ del { font-size: 12px; }
 .p-t-0 { padding-top: 0 !important }
 .p-t-5 { padding-top: 5px !important }
 .p-10 { padding: 10px !important }
+.mw-45 { min-width: 45px !important}
 /* Btn */
 .btn-inverse {
     color: #fff;
@@ -418,6 +419,8 @@ del { font-size: 12px; }
     padding: 7px 6px 5px !important;
     width: 34px;
 }
+/* Image */
+.img-responsive { margin: auto; }
 /* Bootstrap media */
 .media, .media-body {
 	overflow: hidden;

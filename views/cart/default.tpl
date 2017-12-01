@@ -50,22 +50,22 @@
   
   <div class="row navbar navbar-inverse jk-table-head m-b-0">
     <div class="container-fluid">
-      <div class="col-xs-7">
+      <div class="col-xs-6 col-sm-7 text-center">
         <p class="navbar-text">{{ '_' | jtext: 'COM_JKASSA_GRID_TITLE' }}</p>
       </div>
-      <div class="col-xs-2">
+      <div class="col-sm-3 text-center hidden-xs">
         <p class="navbar-text">{{ '_' | jtext: 'COM_JKASSA_QUANTITY' }}</p>
       </div>
-      <div class="col-xs-3">
+      <div class="col-xs-6 col-sm-2 text-center">
         <p class="navbar-text">{{ '_' | jtext: 'COM_JKASSA_COST' }}</p>
       </div>
     </div>
   </div>
   
   {% for product in products %}
-  <div class="row jk-table-body">
+  <div class="row jk-table-body p-t-5">
     
-    <div class="col-xs-2">
+    <div class="col-xs-6 col-sm-2">
       <div class="product-image">
         {% if product.discount %}
         <ul class="stickers">
@@ -78,7 +78,7 @@
         <!--Product Image-->
         <div class="text-center">
           <a href="{{ product.url }}" target="_blank">
-            <img {{ product.image | img_exists: '88x127' }} alt="{{ product.alias }}" title="{{ product.name }}" />
+            <img {{ product.image | img_exists: '88x127' }} alt="{{ product.alias }}" class="img-responsive" />
           </a>
         </div>
         
@@ -98,74 +98,20 @@
       </div>
     </div>
     
-    <div class="col-xs-5">
-      <!--Product Information-->
-      <div>
-        <h4>
-          <a href="{{ product.url }}" target="_blank">
-            {{ product.name }}
-          </a>
-          
-          {% if product.files %}
-          <!--Files-->
-          <span title="<strong>{{ '_' | jtext: 'COM_JKASSA_ATTACHMENT' }}:</strong><br>{{ product.files | join: '<br>' }}" class="hasTooltip">
-            <span class="glyphicon glyphicon-download"></span>
-          </span>
-          {% endif %}
-        </h4>
-      </div>
-      
-      {% if product.sku %}
-      <!--SKU (code)-->
-      <div class="text-muted small text-right m-t-5">
-        {{ '_' | jtext: 'COM_JKASSA_SKU' }}: {{ product.sku }}
-      </div>
-      {% endif %}
-        
-      {% if product.variants %}
-      <!--Variants product-->
-      <div class="m-t-10">
-        {% for variant in product.variants %}
-          {{ variant.name }}:
-          {% case variant.type %}
-            {% when 'radio' %}
-              <span class="variant-radio-value">
-                {{ variant.value }}
-              </span>
-            {% when 'color' %}
-              <span class="minicolors-swatch">
-                <span style="background-color: {{ variant.value }};" title="{{ variant.title }}"></span>
-              </span>
-            {% when 'select' %}
-              <span>
-                {{ variant.value }}
-              </span>
-          {% endcase %}
-        {% endfor %}
-      </div>
-      {% endif %}
-      
-      <!--Cost-->
-      <div class="m-t-10">
-        {% if product.old_cost %}
-        <!--old cost-->
-        <del class="text-muted">{{ product.old_cost | costDisplay }}{{ currency.symbol }}</del>
-        {% endif %}
-        <!--cost-->
-        {{ product.cost | costDisplay }}{{ currency.symbol }}
-      </div>
-    </div>
-    
-    <div class="col-xs-2 text-center m-t-10">
+    <div class="col-xs-6 col-sm-2 col-sm-push-5 text-center m-t-10">
       <!--Quantity-->
-      <input type="text" value="{{ product.quantity }}" data-id="{{ product.index }}" data-limit="{{ product.limit }}" data-maxlimit="{{ product.maxlimit }}" class="form-control input-sm text-center" name="qty-product-cart-{{ product.index }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_TITLE' }}">
-      <div class="btn-group qty-product m-t-10">
-        <a href="javascript:;" data-click="qty-minus-cart" data-id="{{ product.index }}" class="btn btn-default" title="{{ '_' | jtext: 'COM_JKASSA_QTY_BTN' }}">&minus;</a>
-        <a href="javascript:;" data-click="qty-plus-cart" data-id="{{ product.index }}" class="btn btn-default" title="{{ '_' | jtext: 'COM_JKASSA_QTY_BTN' }}">+</a>
-      </div>
+	  <div class="input-group qty-product m-t-10 m-b-0 col-xs-4 col-sm-10" style="margin: auto !important">
+		<span class="input-group-btn">
+		  <a href="javascript:;" class="btn btn-default btn-sm" data-click="qty-minus-cart" data-id="{{ product.index }}" class="btn btn-default" title="{{ '_' | jtext: 'COM_JKASSA_QTY_BTN' }}">&minus;</a>
+		</span>
+        <input type="text" value="{{ product.quantity }}" data-id="{{ product.index }}" data-limit="{{ product.limit }}" data-maxlimit="{{ product.maxlimit }}" class="form-control input-sm text-center mw-45" name="qty-product-cart-{{ product.index }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_TITLE' }}">
+		<span class="input-group-btn">
+		  <a href="javascript:;" class="btn btn-default btn-sm" data-click="qty-plus-cart" data-id="{{ product.index }}" class="btn btn-default" title="{{ '_' | jtext: 'COM_JKASSA_QTY_BTN' }}">+</a>
+		</span>
+	  </div>
     </div>
     
-    <div class="col-xs-3 text-center">
+    <div class="col-xs-6 col-sm-3 col-sm-push-5 text-center">
       <!--Price-->
       <div class="cost text-info">
         <span>{{ product.price | costDisplay }}</span>{{ currency.symbol }}
@@ -184,7 +130,59 @@
         </a>
       </div>
     </div>
-    
+		<div class="col-xs-12 col-sm-5 col-sm-pull-5">
+			<!--Product Information-->
+			<div>
+				<h4>
+					<a href="{{ product.url }}" target="_blank">
+						{{ product.name }}
+					</a>
+					{% if product.files %}
+					<!--Files-->
+					<span title="<strong>{{ '_' | jtext: 'COM_JKASSA_ATTACHMENT' }}:</strong><br>{{ product.files | join: '<br>' }}" class="hasTooltip">
+						<span class="glyphicon glyphicon-download"></span>
+					</span>
+					{% endif %}
+				</h4>
+			</div>
+			{% if product.sku %}
+			<!--SKU (code)-->
+			<div class="text-muted small text-right m-t-5">
+				{{ '_' | jtext: 'COM_JKASSA_SKU' }}: {{ product.sku }}
+			</div>
+			{% endif %}
+			{% if product.variants %}
+			<!--Variants product-->
+			<div class="m-t-10">
+				{% for variant in product.variants %}
+					{{ variant.name }}:
+					{% case variant.type %}
+						{% when 'radio' %}
+							<span class="variant-radio-value">
+								{{ variant.value }}
+							</span>
+						{% when 'color' %}
+							<span class="minicolors-swatch">
+								<span style="background-color: {{ variant.value }};" title="{{ variant.title }}"></span>
+							</span>
+						{% when 'select' %}
+							<span>
+								{{ variant.value }}
+							</span>
+					{% endcase %}
+				{% endfor %}
+			</div>
+			{% endif %}
+			<!--Cost-->
+			<div class="m-t-10">
+				{% if product.old_cost %}
+				<!--old cost-->
+				<del class="text-muted">{{ product.old_cost | costDisplay }}{{ currency.symbol }}</del>
+				{% endif %}
+				<!--cost-->
+				{{ product.cost | costDisplay }}{{ currency.symbol }}
+			</div>
+		</div>
   </div>
   {% endfor %}
   
@@ -203,8 +201,12 @@
     <!--Coupons code-->
     <div class="col-xs-12 m-l-0 form-inline">
 	  <p class="text-muted">{{ '_' | jtext: 'COM_JKASSA_ORDER_CODE_TITLE' }}</p>
-	  <input type="text" id="coupons_code" class="form-control input-sm" placeholder="{{ '_' | jtext: 'COM_JKASSA_ORDER_CODE_ENTER' }}" value="{{ coupon.value }}">
-      <a href="#" data-click="code-apply" class="btn btn-default btn-sm">{{ '_' | jtext: 'COM_JKASSA_APPLY' }}</a>
+	  <div class="input-group">
+		<input type="text" id="coupons_code" class="form-control input-sm" placeholder="{{ '_' | jtext: 'COM_JKASSA_ORDER_CODE_ENTER' }}" value="{{ coupon.value }}">
+		<span class="input-group-btn">
+		  <a href="#" data-click="code-apply" class="btn btn-default btn-sm">{{ '_' | jtext: 'COM_JKASSA_APPLY' }}</a>
+		</span>
+	  </div>
       {% if coupon.note %}
       <div class="alert alert-danger m-t-5">
         {{ coupon.note }}
@@ -212,7 +214,7 @@
       {% endif %}
     </div>
     {% endif %}
-    <div class="col-xs-6 m-l-0">
+    <div class="col-xs-12 col-sm-6 m-l-0">
       {% if limit_order == 0 %}
       <!--Order url-->
       <button class="btn btn-success" type="button" onClick="window.open('{{ order_url }}', '_top')">
@@ -221,28 +223,47 @@
       </button>
       {% endif %}
     </div>
-    <div class="col-xs-6 m-l-0">
+    <div class="col-xs-12 col-sm-6 m-l-0">
       <div class="row text-right">
         {% if discounts %}
         <!-- Total price -->
         <div class="col-xs-7 m-l-0"><strong>{{ '_' | jtext: 'COM_JKASSA_SUM' }}:</strong></div>
         <div class="col-xs-5 m-l-0 cost"><span>{{ total | costDisplay }}</span>{{ currency.symbol }}</div>
         {% endif %}
+		{% if discounts.sav %}
+        <!--Discount sav-->
+        <div class="col-xs-7 m-l-0"><strong>{{ discounts.sav.name }}:</strong></div>
+        <div class="col-xs-5 m-l-0">
+          -{{ discounts.sav.difference | costDisplay }}{{ currency.symbol }}
+		  {% if discounts.sav.percent %}
+		  <em>({{ discounts.sav.discount }}%)</em>
+		  {% endif %}
+          {% if discounts.sav.desc %}
+          <span class="glyphicon glyphicon-info-sign hasTooltip" title="{{ discounts.sav.desc }}"></span>
+          {% endif %}
+        </div>
+        {% endif %}
         {% if discounts.sum %}
-        <!--Discounts sum-->
+        <!--Discount sum-->
         <div class="col-xs-7 m-l-0"><strong>{{ discounts.sum.name }}:</strong></div>
         <div class="col-xs-5 m-l-0">
           -{{ discounts.sum.difference | costDisplay }}{{ currency.symbol }}
+		  {% if discounts.sum.percent %}
+		  <em>({{ discounts.sum.discount }}%)</em>
+		  {% endif %}
           {% if discounts.sum.desc %}
           <span class="glyphicon glyphicon-info-sign hasTooltip" title="{{ discounts.sum.desc }}"></span>
           {% endif %}
         </div>
         {% endif %}
 		{% if discounts.code %}
-		<!--Discounts code-->
+		<!--Discount code-->
 		<div class="col-xs-7 m-l-0"><strong>{{ discounts.code.name }}:</strong></div>
         <div class="col-xs-5 m-l-0">
           -{{ discounts.code.difference | costDisplay }}{{ currency.symbol }}
+		  {% if discounts.code.percent %}
+		  <em>({{ discounts.code.discount }}%)</em>
+		  {% endif %}
           {% if discounts.code.desc %}
           <span class="glyphicon glyphicon-info-sign hasTooltip" title="{{ discounts.code.desc }}"></span>
           {% endif %}
@@ -281,7 +302,6 @@
   </div>
   {% endif %}
 {% endif %}
-
 {% if viewtmpl != 'component' %}
 {% if posttext %}
 <!--Posttext-->

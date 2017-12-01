@@ -94,14 +94,17 @@
           <div class="discount-value">
             {{ '_' | jtext: 'COM_JKASSA_DISCOUNT' }}
             <br>
-            <span>{{ discount | costDisplay }}{{ d_symbol }}</span>
+            <span>{{ discount }}{{ d_symbol }}</span>
           </div>
           {% endif %}
           
           <div class="discount-desc">
             <h3>
-              {{ name }}<br>
+              {{ name }}
+			  {% if products_quantity %}
+			  <br>
               <small>{{ 'plural' | jtext: 'COM_JKASSA_PRODUCTS_QUANTITY', products_quantity }}</small>
+			  {% endif %}
             </h3>
             {{ introtext }}
           </div>
@@ -118,10 +121,11 @@
 </div>
 {% endif %}
 
+{% if products %}
 <hr>
-
 <!--Layout products-->
 {{ products }}
+{% endif %}
 
 {% comment %}
     Connecting comments plugin.

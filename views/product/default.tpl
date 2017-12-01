@@ -81,7 +81,7 @@
 <!--Product-->
 <div class="row" itemscope itemtype="http://schema.org/Product">
   <!--Images-->
-  <div class="col-sm-7 col-xs-12 product-image">
+  <div class="col-sm-7 product-image">
     {% assign jkimages = images | jkimages: 64, 380 %}
     {% if jkimages %}
       {{ jkimages }}
@@ -130,7 +130,7 @@
   </div>
   
   <!--Cost block-->
-  <div class="col-sm-5 col-xs-12">
+  <div class="col-sm-5">
     
     {% if manufacturer %}
     <!--Manufacturer-->
@@ -240,7 +240,7 @@
 	  <span class="input-group-btn">
 		<a href="javascript:;" class="btn btn-default btn-sm" type="button" data-click="qty-minus" data-id="{{ id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_BTN' }}">&minus;</a>
 	  </span>
-	  <input type="text" value="{{ limit }}" data-limit="{{ limit }}" data-maxlimit="{{ maxlimit }}" class="form-control input-sm text-center" name="qty-product-{{ id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_TITLE' }}">
+	  <input type="text" value="{{ limit }}" data-limit="{{ limit }}" data-maxlimit="{{ maxlimit }}" class="form-control input-sm text-center mw-45" name="qty-product-{{ id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_TITLE' }}">
 	  <span class="input-group-btn">
 		<a href="javascript:;" class="btn btn-default btn-sm" type="button" data-click="qty-plus" data-id="{{ id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_BTN' }}">+</a>
 	  </span>
@@ -248,68 +248,74 @@
 	{% endif %}
     
     <!--Buttons-->
-    <div class="m-t-10">
-      {% if btn_buyDisabled %}
-      <!--Buy disabled-->
-      <span class="btn btn-primary disabled">
-        <span class="glyphicon glyphicon-ok"></span>
-        {{ '_' | jtext: 'COM_JKASSA_BUY' }}
-      </span>
-      {% endif %}
-      
-      {% if btn_buy %}
-      <!--Buy-->
-      <a href="#" data-click="to-order" data-id="{{ id }}" data-url="{{ form_url }}" class="btn btn-success">
-        <span class="glyphicon glyphicon-ok"></span>
-        {{ '_' | jtext: 'COM_JKASSA_BUY' }}
-      </a>
-      {% endif %}
-      
-      {% if btn_cartDisabled %}
-      <!--Cart disabled-->
-      <span class="btn btn-info disabled" title="{{ 'sprintf' | jtext: 'COM_JKASSA_ALREADY_CART', name }}">
-        <span class="glyphicon glyphicon-shopping-cart"></span>
-        {{ '_' | jtext: 'COM_JKASSA_IN_CART' }}
-      </span>
-      {% endif %}
-      
-      {% if btn_cart %}
-      <!--Cart-->
-      <a href="#" data-click="to-cart" data-id="{{ id }}" class="btn btn-info" title="{{ 'sprintf' | jtext: 'COM_JKASSA_TO_CART_TITLE', name }}">
-        <span class="glyphicon glyphicon-shopping-cart"></span>
-        {{ '_' | jtext: 'COM_JKASSA_TO_CART' }}
-      </a>
-      {% endif %}
+    <div>
+	  <div class="btn-group m-t-10">
+        {% if btn_buyDisabled %}
+        <!--Buy disabled-->
+        <span class="btn btn-primary disabled">
+          <span class="glyphicon glyphicon-ok"></span>
+          {{ '_' | jtext: 'COM_JKASSA_BUY' }}
+        </span>
+        {% endif %}
+        
+        {% if btn_buy %}
+        <!--Buy-->
+        <a href="#" data-click="to-order" data-id="{{ id }}" data-url="{{ form_url }}" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+          {{ '_' | jtext: 'COM_JKASSA_BUY' }}
+        </a>
+        {% endif %}
+        
+        {% if btn_cartDisabled %}
+        <!--Cart disabled-->
+        <span class="btn btn-info disabled" title="{{ 'sprintf' | jtext: 'COM_JKASSA_ALREADY_CART', name }}">
+          <span class="glyphicon glyphicon-shopping-cart"></span>
+          {{ '_' | jtext: 'COM_JKASSA_IN_CART' }}
+        </span>
+        {% endif %}
+        
+        {% if btn_cart %}
+        <!--Cart-->
+        <a href="#" data-click="to-cart" data-id="{{ id }}" class="btn btn-info" title="{{ 'sprintf' | jtext: 'COM_JKASSA_TO_CART_TITLE', name }}">
+          <span class="glyphicon glyphicon-shopping-cart"></span>
+          {{ '_' | jtext: 'COM_JKASSA_TO_CART' }}
+        </a>
+       {% endif %}
+      </div>
       
       {% if btn_report %}
       <!--Waiting List-->
-      <a href="#" data-click="show-modal" data-id="jk-modal_waitinglist" data-src="{{ waitinglist }}" class="btn btn-default">
-        <span class="glyphicon glyphicon-envelope"></span>
-        {{ '_' | jtext: 'COM_JKASSA_WAITINGLIST' }}
-      </a>
+	  <div class="btn-group m-t-10">
+        <a href="#" data-click="show-modal" data-id="jk-modal_waitinglist" data-src="{{ waitinglist }}" class="btn btn-default">
+          <span class="glyphicon glyphicon-envelope"></span>
+          {{ '_' | jtext: 'COM_JKASSA_WAITINGLIST' }}
+        </a>
+	  </div>
       {% endif %}
       
-      <!--Add to Wishlist-->
-      {% if wishlist_disabled %}
-      <span class="btn btn-default btn-circle disabled" title="{{ 'sprintf' | jtext: 'COM_JKASSA_ALREADY_WISHLIST', name }}">
-        <span class="glyphicon glyphicon-heart text-danger"></span>
-      </span>
-      {% else %}
-      <a href="#" data-click="to-wishlist" data-id="{{ id }}" class="btn btn-default btn-circle" title="{{ 'sprintf' | jtext: 'COM_JKASSA_TO_WISHLIST_TITLE', name }}">
-        <span class="glyphicon glyphicon-heart text-danger"></span>
-      </a>
-      {% endif %}
-      
-      <!--Add to compare-->
-      {% if compare_disabled %}
-      <span class="btn btn-default btn-circle disabled" title="{{ 'sprintf' | jtext: 'COM_JKASSA_COMPARE_ALREADY_ADDED', name }}">
-        <span class="glyphicon glyphicon-random"></span>
-      </span>
-      {% else %}
-      <a href="#" data-click="to-compare" data-id="{{ id }}" class="btn btn-default btn-circle" title="{{ 'sprintf' | jtext: 'COM_JKASSA_COMPARE_ADD_TITLE', name}}">
-        <span class="glyphicon glyphicon-random"></span>
-      </a>
-      {% endif %}
+	  <div class="btn-group m-t-10">
+        <!--Add to Wishlist-->
+        {% if wishlist_disabled %}
+        <span class="btn btn-default btn-circle disabled" title="{{ 'sprintf' | jtext: 'COM_JKASSA_ALREADY_WISHLIST', name }}">
+          <span class="glyphicon glyphicon-heart text-danger"></span>
+        </span>
+        {% else %}
+        <a href="#" data-click="to-wishlist" data-id="{{ id }}" class="btn btn-default btn-circle" title="{{ 'sprintf' | jtext: 'COM_JKASSA_TO_WISHLIST_TITLE', name }}">
+          <span class="glyphicon glyphicon-heart text-danger"></span>
+        </a>
+        {% endif %}
+        
+        <!--Add to compare-->
+        {% if compare_disabled %}
+        <span class="btn btn-default btn-circle disabled" title="{{ 'sprintf' | jtext: 'COM_JKASSA_COMPARE_ALREADY_ADDED', name }}">
+          <span class="glyphicon glyphicon-random"></span>
+        </span>
+        {% else %}
+        <a href="#" data-click="to-compare" data-id="{{ id }}" class="btn btn-default btn-circle" title="{{ 'sprintf' | jtext: 'COM_JKASSA_COMPARE_ADD_TITLE', name}}">
+          <span class="glyphicon glyphicon-random"></span>
+        </a>
+        {% endif %}
+	  </div>
     </div>
     
     {% if btn_quickorder and quickorder %}
@@ -365,7 +371,7 @@
 
 <!--Tabs-->
 <div class="m-t-10">
-  <ul class="nav nav-tabs m-b-15" role="tablist">
+  <ul class="nav nav-tabs nav-justified m-b-15" role="tablist">
     <li role="presentation" class="active">
       <a href="#description" aria-controls="description" role="tab" data-toggle="tab">
         {{ '_' | jtext: 'JGLOBAL_DESCRIPTION' }}

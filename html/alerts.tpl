@@ -4,10 +4,10 @@
   </div>
   <div class="jk_alert_body">
     <div class="row">
-      <div class="col-xs-3">
-        <img src="{{ image }}" alt="{{ alias }}" style="max-width: 120px" />
+      <div class="col-xs-12 col-sm-3">
+        <img src="{{ image }}" alt="{{ alias }}" class="img-responsive" />
       </div>
-      <div class="col-xs-9">
+      <div class="col-xs-12 col-sm-9">
         <!--Name-->
         <a href="{{ url }}">
           {{ name }}
@@ -57,22 +57,26 @@
     </div>
   </div>
   <div class="jk_alert_footer">
-    <a href="#" data-click="close-alert" class="btn btn-default">
-      {{ '_' | jtext: 'COM_JKASSA_CART_CONTINUE_SHOPPING' }}
+    <a href="#" data-click="close-alert" class="btn btn-default" title="{{ '_' | jtext: 'COM_JKASSA_CART_CONTINUE_SHOPPING' }}">
+	  <span class="glyphicon glyphicon-circle-arrow-left"></span>
+	  <span class="hidden-xs">{{ '_' | jtext: 'COM_JKASSA_CART_CONTINUE_SHOPPING' }}</span>
     </a>
     {% if event == 'to_cart' %}
-    <a href="{{ url_order }}" class="btn btn-info pull-right">
-      {{ '_' | jtext: 'COM_JKASSA_CHECKOUT' }}
+    <a href="{{ url_order }}" class="btn btn-info pull-right" title="{{ '_' | jtext: 'COM_JKASSA_CHECKOUT' }}">
+	  <span class="glyphicon glyphicon-shopping-cart"></span>
+	  <span class="hidden-xs">{{ '_' | jtext: 'COM_JKASSA_CHECKOUT' }}</span>
     </a>
     {% endif %}
     {% if event == 'to_wishlist' %}
-    <a href="{{ url_wishlist }}" class="btn btn-info pull-right">
-      {{ '_' | jtext: 'COM_JKASSA_YOUR_WISHLIST' }}
+    <a href="{{ url_wishlist }}" class="btn btn-info pull-right" title="{{ '_' | jtext: 'COM_JKASSA_YOUR_WISHLIST' }}">
+	  <span class="glyphicon glyphicon-heart"></span>
+	  <span class="hidden-xs">{{ '_' | jtext: 'COM_JKASSA_YOUR_WISHLIST' }}</span>
     </a>
     {% endif %}
     {% if event == 'to_compare' %}
-    <a href="{{ url_compare }}" class="btn btn-info pull-right">
-      {{ '_' | jtext: 'COM_JKASSA_COMPARE_LIST' }}
+    <a href="{{ url_compare }}" class="btn btn-info pull-right" title="{{ '_' | jtext: 'COM_JKASSA_COMPARE_LIST' }}">
+	  <span class="glyphicon glyphicon-random"></span>
+	  <span class="hidden-xs">{{ '_' | jtext: 'COM_JKASSA_COMPARE_LIST' }}</span>
     </a>
     {% endif %}
   </div>

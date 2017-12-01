@@ -121,25 +121,44 @@
       {% endfor %}
       
       <!--Table footer-->
-      <div class="container-fluid jk-table-footer p-0">
+      <div class="container-fluid jk-table-footer text-right p-0">
         <!-- Total price -->
-        <div class="col-xs-7 m-l-0 text-right"><strong>{{ '_' | jtext: 'COM_JKASSA_SUM' }}:</strong></div>
+        <div class="col-xs-7 m-l-0"><strong>{{ '_' | jtext: 'COM_JKASSA_SUM' }}:</strong></div>
         <div class="col-xs-5 m-l-0 cost"><span>{{ total | costDisplay }}</span>{{ currency.symbol }}</div>
+		{% if discounts.sav %}
+        <!--Discount sav-->
+        <div class="col-xs-7 m-l-0"><strong>{{ discounts.sav.name }}:</strong></div>
+        <div class="col-xs-5 m-l-0">
+          -{{ discounts.sav.difference | costDisplay }}{{ currency.symbol }}
+		  {% if discounts.sav.percent %}
+		  <em>({{ discounts.sav.discount }}%)</em>
+		  {% endif %}
+          {% if discounts.sav.desc %}
+          <span class="glyphicon glyphicon-info-sign hasTooltip" title="{{ discounts.sav.desc }}"></span>
+          {% endif %}
+        </div>
+        {% endif %}
         {% if discounts.sum %}
-        <!--Discounts sum-->
-        <div class="col-xs-7 m-l-0 text-right"><strong>{{ discounts.sum.name }}:</strong></div>
+        <!--Discount sum-->
+        <div class="col-xs-7 m-l-0"><strong>{{ discounts.sum.name }}:</strong></div>
         <div class="col-xs-5 m-l-0">
           -{{ discounts.sum.difference | costDisplay }}{{ currency.symbol }}
+		  {% if discounts.sum.percent %}
+		  <em>({{ discounts.sum.discount }}%)</em>
+		  {% endif %}
           {% if discounts.sum.desc %}
           <span class="glyphicon glyphicon-info-sign hasTooltip" title="{{ discounts.sum.desc }}"></span>
           {% endif %}
         </div>
         {% endif %}
         {% if discounts.code %}
-        <!--Discounts code-->
-        <div class="col-xs-7 m-l-0 text-right"><strong>{{ discounts.code.name }}:</strong></div>
+        <!--Discount code-->
+        <div class="col-xs-7 m-l-0"><strong>{{ discounts.code.name }}:</strong></div>
         <div class="col-xs-5 m-l-0">
-          -{{ discounts.code.difference }}{{ currency.symbol }}
+          -{{ discounts.code.difference | costDisplay }}{{ currency.symbol }}
+		  {% if discounts.code.percent %}
+		  <em>({{ discounts.code.discount }}%)</em>
+		  {% endif %}
           {% if discounts.code.desc %}
           <span class="glyphicon glyphicon-info-sign hasTooltip" title="{{ discounts.code.desc }}"></span>
           {% endif %}
@@ -147,7 +166,7 @@
         {% endif %}
         {% if delivery_cost %}
         <!--Delivery cost-->
-        <div class="col-xs-7 m-l-0 text-right"><strong>{{ '_' | jtext: 'COM_JKASSA_ORDER_DELIVERY' }}:</strong></div>
+        <div class="col-xs-7 m-l-0"><strong>{{ '_' | jtext: 'COM_JKASSA_ORDER_DELIVERY' }}:</strong></div>
         <div class="col-xs-5 m-l-0">
           {% if delivery_cost == '0.00' %}
             {{ '_' | jtext: 'COM_JKASSA_FREE' }}
@@ -158,7 +177,7 @@
         {% endif %}
 		{% if sum_vat %}
 	    <!--Sum of VAT-->
-	    <div class="col-xs-7 m-l-0 text-right"><strong>{{ '_' | jtext: 'COM_JKASSA_VAT' }}:</strong></div>
+	    <div class="col-xs-7 m-l-0"><strong>{{ '_' | jtext: 'COM_JKASSA_VAT' }}:</strong></div>
 	    <div class="col-xs-5 m-l-0">
 	      {{ sum_vat | costDisplay }}{{ currency.symbol }}
 	    </div>
@@ -166,7 +185,7 @@
 		{% if taxes %}
 	    <!--Taxes-->
 	    {% for tax in taxes %}
-	    <div class="col-xs-7 m-l-0 text-right"><strong>{{ tax.name }}:</strong></div>
+	    <div class="col-xs-7 m-l-0"><strong>{{ tax.name }}:</strong></div>
 	    <div class="col-xs-5 m-l-0">
 	      {{ tax.tax }}%
 		  {% if tax.description %}
@@ -176,7 +195,7 @@
 	    {% endfor %}
 	    {% endif %}
         <!--In total price-->
-        <div class="col-xs-12 m-l-0 text-right">
+        <div class="col-xs-12 m-l-0">
           <span class="lead text-info p-t-5" style="border-top:1px solid #dddddd">
             {{ in_total | costDisplay }}{{ currency.symbol }}
           </span>

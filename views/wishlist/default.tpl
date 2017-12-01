@@ -24,7 +24,7 @@
 
 <!--Products-->
 {% if products %}
-{% assign col_xs = tpl_params.col_xs | default_value: 4 %}
+{% assign col_md = tpl_params.p_in_row | default_value: 4 %}
 {% assign prod_height = tpl_params.prod_height | default_value: 282 %}
 {% capture prod_height_css %}.thumbnails > li .over-wraper, .thumbnails > li .over-wraper-long { height: {{ prod_height }}px } .thumbnails > li:hover .over-wraper-long { min-height: {{ prod_height }}px }{% endcapture %}
 {{ prod_height_css | addStyleDeclaration }}
@@ -32,9 +32,9 @@
 {% assign show_stock = tpl_params.prod_stock | default_value: 1 %}
 {% assign show_quantity = tpl_params.prod_quantity | default_value: 1 %}
 <div class="row block-products">
-  <ul class="list-unstyled">
+  <ul class="thumbnails list-unstyled">
     {% for product in products %}
-    <li class="col-xs-{{ col_xs }}">
+    <li class="col-xs-12 col-sm-6 col-md-{{ col_md }}">
       <div class="over-wraper">
         <div class="thumbnail over-wraper-long">
           <div class="product-image">
@@ -199,7 +199,7 @@
               <span class="input-group-btn">
                 <a href="javascript:;" class="btn btn-default btn-sm" type="button" data-click="qty-minus" data-id="{{ product.id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_BTN' }}">&minus;</a>
               </span>
-              <input type="text" value="{{ product.limit }}" data-limit="{{ product.limit }}" data-maxlimit="{{ product.maxlimit }}" class="form-control input-sm text-center" name="qty-product-{{ product.id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_TITLE' }}">
+              <input type="text" value="{{ product.limit }}" data-limit="{{ product.limit }}" data-maxlimit="{{ product.maxlimit }}" class="form-control input-sm text-center mw-45" name="qty-product-{{ product.id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_TITLE' }}">
               <span class="input-group-btn">
                 <a href="javascript:;" class="btn btn-default btn-sm" type="button" data-click="qty-plus" data-id="{{ product.id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_BTN' }}">+</a>
               </span>

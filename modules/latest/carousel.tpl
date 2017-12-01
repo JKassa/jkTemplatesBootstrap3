@@ -15,7 +15,7 @@
     <div class="item {% if active == 1 %}active{% endif %}">
       <ul class="row list-unstyled">
         {% for product in row %}
-        <li itemscope itemtype="http://schema.org/Product" class="col-md-3 col-sm-3 col-xs-12">
+        <li itemscope itemtype="http://schema.org/Product" class="col-xs-12 col-sm-6 col-md-3">
           <div class="thumbnail">
             <div style="height: {{ block_height }}px">
               {% if product.image %}

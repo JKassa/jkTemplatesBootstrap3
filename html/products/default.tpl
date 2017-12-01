@@ -30,17 +30,19 @@
     <div class="row page-header">
       <div class="col-xs-8">
         <!--Sort by-->
-        <span class="glyphicon glyphicon-filter" title="{{ '_' | jtext: 'COM_JKASSA_SORT_TITLE' }}"></span>
+        <span class="glyphicon glyphicon-filter hidden-xs" title="{{ '_' | jtext: 'COM_JKASSA_SORT_TITLE' }}"></span>
         <select data-select="products-sorting" name="product-sorting">
           {% for sort in sorting %}
           <option value="{{ sort.value }}" {{ sort.selected }}>{{ sort.title }}</option>
           {% endfor %}
         </select>
-        <select data-select="products-limit" title="{{ '_' | jtext: 'JSHOW' }}">
-          {% for limit in limits %}
-          <option value="{{ limit.value }}" {{ limit.selected }}>{{ limit.title }}</option>
-          {% endfor %}
-        </select>
+		<span class="hidden-xs">
+          <select data-select="products-limit" title="{{ '_' | jtext: 'JSHOW' }}">
+            {% for limit in limits %}
+            <option value="{{ limit.value }}" {{ limit.selected }}>{{ limit.title }}</option>
+            {% endfor %}
+          </select>
+		</span>
       </div>
       <div class="col-xs-4 text-right">
         <!--Switch product layout-->

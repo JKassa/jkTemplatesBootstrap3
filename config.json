@@ -39,7 +39,7 @@
 		"label":"COM_JKASSA_PRODUCTS"
 	},
 	{
-		"name":"col_xs",
+		"name":"p_in_row",
 		"type":"list",
 		"label":"FILES_JKTPL_BLOCKS_IN_ROW_LABEL",
 		"description":"FILES_JKTPL_BLOCKS_IN_ROW_DESC",
@@ -82,7 +82,7 @@
 		"label":"JFEATURED"
 	},
 	{
-		"name":"f_col_xs",
+		"name":"f_in_row",
 		"type":"list",
 		"label":"FILES_JKTPL_BLOCKS_IN_ROW_LABEL",
 		"description":"FILES_JKTPL_BLOCKS_IN_ROW_DESC",

@@ -109,7 +109,7 @@
           <div class="discount-value">
             {{ '_' | jtext: 'COM_JKASSA_DISCOUNT' }}
             <br>
-            <span>{{ item.discount | costDisplay }}{{ item.d_symbol }}</span>
+            <span>{{ item.discount }}{{ item.d_symbol }}</span>
           </div>
           {% endif %}
           
