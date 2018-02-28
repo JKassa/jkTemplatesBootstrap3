@@ -45,7 +45,7 @@
 {% capture limit_note %}
   {% if limit_order %}
   <!--Minimum order amount-->
-  <div class="alert alert-warning">
+  <div class="alert alert-warning m-t-10">
     <a data-dismiss="alert" class="close">&times;</a>
     {% capture limit_cost %}{{ limit_order | costDisplay }}{{ currency.symbol }}{% endcapture %}
     <h4>{{ 'sprintf' | jtext: 'COM_JKASSA_LIMIT_ORDER', limit_cost  }}</h4>

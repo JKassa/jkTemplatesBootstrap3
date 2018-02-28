@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row m-t-10">
   <div class="col-sm-12">
     <form action="{{ form_action }}" method="post" class="form-validate form-horizontal">
       <p class="help-block">

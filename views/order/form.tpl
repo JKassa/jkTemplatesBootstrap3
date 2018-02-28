@@ -57,6 +57,8 @@
           {% include 'html/forms/field_tel' %}
         {% when 'url' %}
           {% include 'html/forms/field_url' %}
+	    {% when 'calendar' %}
+          {% include 'html/forms/field_calendar' %}
       {% endcase %}
     {% endfor %}
   </fieldset>
