@@ -219,16 +219,11 @@
               </a>
               <!--Add to cart-->
               {% if product.cart_disabled %}
-                {% if product.stock == 0 %}
-                  {% assign cart_btn_title = '_' | jtext: 'COM_JKASSA_STOCK_0' %}
-                {% else %}
-                  {% assign cart_btn_title = 'sprintf' | jtext: 'COM_JKASSA_ALREADY_CART', product.name %}
-                {% endif %}
-              <span class="btn btn-sm btn-primary disabled" title="{{ cart_btn_title }}">
+              <span class="btn btn-sm btn-primary disabled" title="{{ product.cart_title }}">
                 <span class="glyphicon glyphicon-shopping-cart"></span>
               </span>
               {% else %}
-              <a href="#" data-click="to-cart-user" data-index="{{ product.index }}" data-id="{{ product.id }}" class="btn btn-primary btn-sm" title="{{ 'sprintf' | jtext: 'COM_JKASSA_TO_CART_TITLE', product.name }}">
+              <a href="#" data-click="to-cart-user" data-index="{{ product.index }}" data-id="{{ product.id }}" class="btn btn-primary btn-sm" title="{{ product.cart_title }}">
                 <span class="glyphicon glyphicon-shopping-cart"></span>
               </a>
               {% endif %}

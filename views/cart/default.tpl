@@ -204,7 +204,12 @@
 	  <div class="input-group">
 		<input type="text" id="coupons_code" class="form-control input-sm" placeholder="{{ '_' | jtext: 'COM_JKASSA_ORDER_CODE_ENTER' }}" value="{{ coupon.value }}">
 		<span class="input-group-btn">
-		  <a href="#" data-click="code-apply" class="btn btn-default btn-sm">{{ '_' | jtext: 'COM_JKASSA_APPLY' }}</a>
+		  <a href="#" data-click="code-apply" class="btn btn-default btn-sm">
+			{{ '_' | jtext: 'COM_JKASSA_APPLY' }}
+		  </a>
+		  <a href="#" data-click="code-clear" class="btn btn-default btn-sm" title="{{ '_' | jtext: 'JCLEAR' }}">
+		    <span class="glyphicon glyphicon-remove-sign"></span>
+		  </a>
 		</span>
 	  </div>
       {% if coupon.note %}

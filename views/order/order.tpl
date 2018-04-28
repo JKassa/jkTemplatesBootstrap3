@@ -207,12 +207,19 @@
             <span class="glyphicon glyphicon-gift"></span>
             {{ '_' | jtext: 'COM_JKASSA_ORDER_CODE_USE' }}
           </a>
-          <div id="code-toggle" style="display: none">
-            <input type="text" id="coupons_code" placeholder="{{ '_' | jtext: 'COM_JKASSA_ORDER_CODE_ENTER' }}" class="form-control" value="{{ coupon.value }}">
-            <button data-click="code-apply" class="btn btn-default" type="button">{{ '_' | jtext: 'COM_JKASSA_APPLY' }}</button>
+          <div id="code-toggle" class="input-group m-t-5" style="display: none">
+            <input type="text" id="coupons_code" placeholder="{{ '_' | jtext: 'COM_JKASSA_ORDER_CODE_ENTER' }}" class="form-control input-sm" value="{{ coupon.value }}">
+            <span class="input-group-btn">
+			  <a href="#" data-click="code-apply" class="btn btn-default btn-sm">
+				{{ '_' | jtext: 'COM_JKASSA_APPLY' }}
+			  </a>
+			  <a href="#" data-click="code-clear" class="btn btn-default btn-sm" title="{{ '_' | jtext: 'JCLEAR' }}">
+				<span class="glyphicon glyphicon-remove-sign"></span>
+			  </a>
+			</span>
           </div>
           {% if coupon.note %}
-          <div class="alert alert-danger" id="coupons_note">
+          <div class="alert alert-danger m-t-5 m-b-0" id="coupons_note">
             {{ coupon.note }}
           </div>
           {% endif %}
