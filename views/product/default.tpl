@@ -131,7 +131,6 @@
   
   <!--Cost block-->
   <div class="col-sm-5">
-    
     {% if manufacturer %}
     <!--Manufacturer-->
     <div itemtype="http://schema.org/Brand" itemscope itemprop="brand">
@@ -353,6 +352,16 @@
     {% if social %}
     <div class="m-t-10">
       {{ social }}
+    </div>
+    {% endif %}
+	
+	{% if aff_income %}
+    <!--Affiliate Links-->
+    <div class="m-t-10">
+      <a href="#" data-click="show-modal" data-id="jk-modal_affiliate" data-src="{{ aff_url }}" class="text-muted small">
+        <span class="glyphicon glyphicon-flag"></span>
+		  <em>{{ '_' | jtext: 'COM_JKASSA_AFFILIATE_AFFILIATE_REWARD' }}: <strong>{{ aff_income | costDisplay }}{{ currency.symbol }}</strong></em>
+      </a>
     </div>
     {% endif %}
   </div>
@@ -584,3 +593,10 @@
   Madal body for Quick order.
 {% endcomment %}
 {{ 'renderModal' | bootstrap3: 'jk-modal_quickorder', '', 'COM_JKASSA_QUICK_ORDER', '', '', true }}
+
+{% comment %}
+  Madal body for Affiliate Links.
+{% endcomment %}
+{% if aff_income %}
+{{ 'renderModal' | bootstrap3: 'jk-modal_affiliate', '', 'COM_JKASSA_AFFILIATE_PROGRAM', '', '', true }}
+{% endif %}
