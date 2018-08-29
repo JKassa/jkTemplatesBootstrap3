@@ -32,6 +32,15 @@
       <span style="background-color: {{ attribute.value }};"></span>
     </label>
     {% endfor %}
+	
+	{% when 'texture' %}
+    <!--Texture switches-->
+    {% for attribute in variant.attributes %}
+    <label class="minicolors-swatch{% if attribute.default %} main{% endif %}" title="{{ attribute.title }}">
+      <input type="radio" data-checked="variant-texture" data-attr-title="{{ attribute.title }}" name="variant-{{ product }}-{{ variant.id }}" value="{{ attribute.value }}"{% if attribute.default %} checked{% endif %}>
+      <img src="{{ attribute.img }}" alt="{{ attribute.alt }}">
+    </label>
+    {% endfor %}
     
     {% endcase %}
     

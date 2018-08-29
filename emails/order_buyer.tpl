@@ -182,7 +182,7 @@
                               <br>
                               {% for variant in product.variants %}
                                 {{ variant.name }}:
-                                {% if variant.type == 'color' %}
+                                {% if variant.type == 'color' or variant.type == 'texture' %}
                                   {{ variant.title }}
                                 {% else %}
                                   {{ variant.value }}

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<title>{{ shop_name }} - Тестовое сообщение</title>
+<title>{{ shop_name }} - {{ subject }}</title>
 <style>
 @media only screen and (max-width: 300px) {
 	.body {
@@ -116,7 +116,7 @@
                 <td class="titleblock" style="border-bottom: 1px solid #e2e7eb; padding: 7px 0" align="center">
                   <font size="2" face="Open-sans, sans-serif" color="#555454">
                     <span class="title" style="font-weight: 500; font-size: 28px; text-transform: uppercase; line-height: 33px">
-                      Здравствуйте, {{ admin_name }}
+                      Здравствуйте, {{ user_name }}
                     </span>
                   </font>
                 </td>
@@ -127,8 +127,7 @@
               <tr>
                 <td class="linkbelow" style="padding: 7px 0">
                   <font size="2" face="Open-sans, sans-serif" color="#555454">
-                    Это <strong>тестовый E-mail</strong> из вашего магазина "{{ shop_name }}".<br />
-                    Если вы можете прочитать его, то тестирование прошло успешно!.
+                    {{ message }}
                   </font>
                 </td>
               </tr>
