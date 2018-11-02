@@ -587,12 +587,16 @@
 {% comment %}
   Madal body for Waiting List.
 {% endcomment %}
+{% if waitinglist %}
 {{ 'renderModal' | bootstrap3: 'jk-modal_waitinglist', '', 'COM_JKASSA_WAITINGLIST', '', '', true }}
+{% endif %}
 
 {% comment %}
   Madal body for Quick order.
 {% endcomment %}
+{% if quickorder %}
 {{ 'renderModal' | bootstrap3: 'jk-modal_quickorder', '', 'COM_JKASSA_QUICK_ORDER', '', '', true }}
+{% endif %}
 
 {% comment %}
   Madal body for Affiliate Links.

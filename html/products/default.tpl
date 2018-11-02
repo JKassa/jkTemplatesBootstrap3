@@ -7,14 +7,17 @@
 {% assign options = 'disable_search_threshold' | arrayCombine: 20 %}
 {{ 'formbehavior.chosen' | jhtml: 'select', null, options }}
 
-<!--Header-->
+{% if heading %}
+<!--Heading-->
 <div class="page-header">
-  {% if heading %}
   <h1>{{ heading }}</h1>
-  {% else %}
-  <h2>{{ title }}</h2>
-  {% endif %}
 </div>
+{% elsif title %}
+<!--Title-->
+<div class="page-header">
+  <h2>{{ title }}</h2>
+</div>
+{% endif %}
 
 {% if pretext %}
 <!--Pretext-->
