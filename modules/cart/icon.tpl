@@ -1,6 +1,6 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 
-<div id="jk-cart-module">
+<div id="jk-cart-module" class="{{ class_sfx }}">
 	{% capture popover_html %}
 	<div class="row">
 		{% if image %}

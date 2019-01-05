@@ -1,6 +1,6 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 
-<div id="jk-cart-module">
+<div id="jk-cart-module" class="{{ class_sfx }}">
 	{% if image %}
 	<!--Cart image-->
 	<div class="text-center">

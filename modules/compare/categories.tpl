@@ -1,6 +1,6 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 
-<div id="jk-compare-module">
+<div id="jk-compare-module" class="{{ class_sfx }}">
 	{% if image %}
 	<!--Compare image-->
 	<div class="text-center">

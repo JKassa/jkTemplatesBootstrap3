@@ -1,6 +1,6 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 {% assign btns = 0 | plus: readmore, to_cart, to_wishlist, to_compare %}
-<div class="jkassa jk-latest-module">
+<div class="jkassa jk-latest-module {{ class_sfx }}">
 	{% if products %}
 	  {% case layout %}
 		{% when 'blocks' %}

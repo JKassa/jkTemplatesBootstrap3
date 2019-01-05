@@ -1,6 +1,6 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 
-<div id="jk-wishlist-module">
+<div id="jk-wishlist-module" class="{{ class_sfx }}">
 	{% capture popover_html %}
 	<div class="row">
 		{% if image %}

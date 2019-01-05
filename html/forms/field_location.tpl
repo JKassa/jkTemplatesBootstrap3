@@ -1,4 +1,4 @@
-<div class="form-group"{% if field.showon %} data-showon='{{ field.showon }}'{% endif %}>
+<div id="jk_location" class="form-group"{% if field.showon %} data-showon='{{ field.showon }}'{% endif %}>
   <label class="col-sm-3 control-label">
     {{ field.label }}{% if field.required %} <span class="text-danger">*</span>{% endif %}
   </label>

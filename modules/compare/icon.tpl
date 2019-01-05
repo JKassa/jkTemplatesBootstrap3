@@ -1,6 +1,6 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 
-<div id="jk-compare-module">
+<div id="jk-compare-module" class="{{ class_sfx }}">
 	{% capture popover_html %}
 	<div class="row">
 		{% if image %}

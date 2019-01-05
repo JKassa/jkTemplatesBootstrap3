@@ -9,7 +9,7 @@
   {% assign span = 'col-xs-12' %}
 {% endif %}
 
-<div id="jk-cart-module">
+<div id="jk-cart-module" class="{{ class_sfx }}">
 	{% capture popover_html %}
 	<div class="row">
 	  {% if image %}

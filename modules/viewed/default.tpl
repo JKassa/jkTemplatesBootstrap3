@@ -1,5 +1,5 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
-<div id="jk-viewed-module">
+<div id="jk-viewed-module" class="{{ class_sfx }}">
 	{% if products %}
 	  {% case layout %}
 		{% when 'blocks' %}

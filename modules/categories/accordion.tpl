@@ -1,7 +1,9 @@
 {% for category in categories %}
   {% capture collapseId %}collapseSlider-{{ category.id }}{% endcapture %}
-  {% if category.active %}
+  {% if category.active or category.active_parent %}
     {% assign active = ' in' %}
+  {% else %}
+    {% assign active = '' %}
   {% endif %}
   
   <div class="panel panel-default">

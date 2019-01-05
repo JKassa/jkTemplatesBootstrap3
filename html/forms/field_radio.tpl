@@ -4,18 +4,18 @@
   </label>
   <div class="col-sm-9">
     <span{% if field.tooltip %} class="hasTooltip" title="{{ field.tooltip }}" data-placement="right"{% endif %}>
-      {% for value in field.values %}
+      {% for val in field.values %}
       <div class="radio">
         <label>
           <input
               type="radio"
               name="{{ field.name }}"
-              value="{{ value }}"
-              {% if field.default == value %} checked{% endif %}
+              value="{{ val.value }}"
+              {% if field.default == val.value %} checked{% endif %}
               {% if field.readonly %} disabled{% endif %}
               {% if field.required %} required{% endif %}
           >
-          {{ value }}
+          {{ val.text }}
         </label>
       </div>
       {% endfor %}

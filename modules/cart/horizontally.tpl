@@ -6,7 +6,7 @@
   {% assign span = 'col-xs-6' %}
 {% endif %}
 
-<div id="jk-cart-module" class="thumbnail">
+<div id="jk-cart-module" class="thumbnail {{ class_sfx }}">
   <ul class="list-unstyled row">
     {% if image %}
     <!--Cart image-->

@@ -1,5 +1,5 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
-<div class="jkassa jk-manufacturers-module">
+<div class="jkassa jk-manufacturers-module {{ class_sfx }}">
 	{% if manufacturers %}
 	  {% case layout %}
 		{% when 'blocks' %}
