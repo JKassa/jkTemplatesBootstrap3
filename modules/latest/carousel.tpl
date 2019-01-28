@@ -2,7 +2,7 @@
 {% assign active	= 0 %}
 {% assign dataslide	= 0 %}
 
-<div class="carousel slide mjkcarousel" id="mjklCarousel_{{ mod_id }}">
+<div class="carousel slide mjkcarousel" id="mjklCarousel_{{ mod_id }}" data-ride="carousel" data-interval="{{ interval }}">
   <ol class="carousel-indicators">
     {% for row in rows %}
     <li data-target="#mjklCarousel_{{ mod_id }}" data-slide-to="{{ dataslide }}" class="{% if dataslide == 0 %}active{% endif %}"></li>

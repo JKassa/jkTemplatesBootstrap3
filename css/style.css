@@ -337,6 +337,7 @@ del { font-size: 12px; }
 /* Carousel */
 .jk-cheaper.carousel .carousel-inner,
 .jk-latest-module .carousel-inner,
+.jk-viewed-module .carousel-inner,
 .jk-manufacturers-module .carousel-inner {
 	margin-left: 35px;
 	margin-right: 35px;
@@ -344,6 +345,7 @@ del { font-size: 12px; }
 }
 .jk-cheaper.carousel .carousel-control,
 .jk-latest-module .carousel-control,
+.jk-viewed-module .carousel-control,
 .jk-manufacturers-module .carousel-control {
 	background: #fff !important;
 	border: 2px solid #265a82;
@@ -357,28 +359,34 @@ del { font-size: 12px; }
 }
 .jk-cheaper.carousel .carousel-control.right,
 .jk-latest-module .carousel-control.right,
+.jk-viewed-module .carousel-control.right,
 .jk-manufacturers-module .carousel-control.right { right: 0; }
 .jk-cheaper.carousel .carousel-indicators .active,
 .jk-latest-module .carousel-indicators .active,
+.jk-viewed-module .carousel-indicators .active,
 .jk-manufacturers-module .carousel-indicators .active { background-color: #ccc; }
 .jk-cheaper.carousel .carousel-indicators li,
 .jk-latest-module .carousel-indicators li,
+.jk-viewed-module .carousel-indicators li,
 .jk-manufacturers-module .carousel-indicators li { background-color: #265a82; }
 @media (min-width: 768px) and (max-width: 979px) {
 	.jk-cheaper.carousel .carousel-inner,
 	.jk-latest-module .carousel-inner,
+	.jk-viewed-module .carousel-inner,
 	.jk-manufacturers-module .carousel-inner {
 		margin-left: auto;
 		margin-right: auto;
 		width: 100%;
 	}
 	.jk-latest-module .control-box,
+	.jk-viewed-module .control-box,
 	.jk-manufacturers-module .control-box,
 	.jk-cheaper.carousel .control-box {
 		display: block;
 		text-align: center;
 	}
 	.jk-latest-module .carousel-control,
+	.jk-viewed-module .carousel-control,
 	.jk-manufacturers-module .carousel-control,
 	.jk-cheaper.carousel .carousel-control {
 		display: inline-block;

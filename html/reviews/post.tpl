@@ -1,7 +1,7 @@
 <div id="reviewPost{{ review_id }}" class="media">
 	<!--Img-->
 	<div class="media-left">
-		<img src="{{ user_img }}" class="media-object" alt="{{ user_name }}" style="width: 64px; height: 64px;">
+		<img src="{{ user_img }}" class="media-object img-circle" alt="{{ user_name }}" style="width: 64px; height: 64px;">
 	</div>
 	<div class="media-body">
 		<!--Name / Rating / Date-->

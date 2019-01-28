@@ -30,7 +30,11 @@
   <fieldset class="filters btn-toolbar clearfix">
     <div class="btn-group pull-right">
       {{ '_' | jtext: 'JGLOBAL_DISPLAY_NUM' }}
-      {{ limit }}
+      <select onchange="this.form.submit()" name="limit" title="{{ '_' | jtext: 'JSHOW' }}" class="input-medium" style="width: auto;">
+        {% for limit in limits %}
+          <option value="{{ limit.value }}"{{ limit.selected }}>{{ limit.title }}</option>
+        {% endfor %}
+      </select>
     </div>
   </fieldset>
   
@@ -46,8 +50,11 @@
         <h4 class="media-heading">
           <a href="{{ item.url }}">
             {{ item.name }}
-            <small class="text-muted">({{ 'plural' | jtext: 'COM_JKASSA_PRODUCTS_QUANTITY', item.products_quantity }})</small>
           </a>
+		  &nbsp;
+		  <small class="text-muted">
+			({{ 'plural' | jtext: 'COM_JKASSA_PRODUCTS_QUANTITY', item.products_quantity }})
+		  </small>
         </h4>
         {{ item.introtext }}
       </div>

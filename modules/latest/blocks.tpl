@@ -24,7 +24,7 @@
               </span>
             </div>
             {% endif %}
-            {% if product.old_cost %}
+            {% if product.cost and product.old_cost %}
             <del class="text-muted">{{ product.old_cost | costDisplay }}{{ currency.symbol }}</del>
             {% endif %}
           </div>
