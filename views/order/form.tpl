@@ -59,6 +59,8 @@
           {% include 'html/forms/field_url' %}
 	    {% when 'calendar' %}
           {% include 'html/forms/field_calendar' %}
+	    {% when 'note' %}
+		  {% include 'html/forms/field_note' %}
       {% endcase %}
     {% endfor %}
   </fieldset>
@@ -124,6 +126,8 @@
                   {% include 'html/forms/field_calendar' %}
 		  		{% when 'note' %}
                   {% include 'html/forms/field_note' %}
+			    {% when 'html' %}
+				  {% include 'html/forms/field_html' %}
               {% endcase %}
 		    {% endif %}
           {% endfor %}
@@ -175,6 +179,10 @@
                   {% include 'html/forms/field_checkbox' %}
                 {% when 'calendar' %}
                   {% include 'html/forms/field_calendar' %}
+		  		{% when 'note' %}
+                  {% include 'html/forms/field_note' %}
+			    {% when 'html' %}
+				  {% include 'html/forms/field_html' %}
               {% endcase %}
 		    {% endif %}
           {% endfor %}
