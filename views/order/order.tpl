@@ -22,10 +22,13 @@
         <!--Product Image-->
         <div class="col-xs-4">
           <div class="product-image">
-            {% if product.discount %}
+            {% if product.d_simple %}
             <ul class="stickers">
               <li>
-                <span class="product-label">-{{ product.discount | costDisplay }}{{ product.d_symbol }}</span>
+                <span class="product-label">
+				  {% assign options = 'decimals' | arrayCombine: 0 %}
+				  -{{ product.d_simple.value | costDisplay: options }}{% if product.d_simple.symbol == '%' %}{{ product.d_simple.symbol }}{% endif %}
+				</span>
               </li>
             </ul>
             {% endif %}
@@ -94,6 +97,20 @@
           <!--Old cost-->
           <div class="m-t-10">
             <del class="text-muted">{{ product.old_cost | costDisplay }}{{ currency.symbol }}</del>
+			{% if product.d_coupon %}
+			<br>
+			<!--Promotional code-->
+			<span class="text-danger small">
+			  <strong>{{ product.d_coupon.name }}</strong>:
+			  -{{ product.d_coupon.difference | costDisplay }}{{ currency.symbol }}
+			  {% if product.d_coupon.symbol == '%' %}
+			  <em>({{ product.d_coupon.value }}%)</em>
+			  {% endif %}
+			  {% if product.d_coupon.desc %}
+			  <span class="glyphicon glyphicon-info-sign hasTooltip" title="{{ product.d_coupon.desc }}"></span>
+			  {% endif %}
+			</span>
+			{% endif %}
           </div>
           {% endif %}
         </div>
@@ -152,19 +169,6 @@
 		  {% endif %}
           {% if discounts.sum.desc %}
           <span class="glyphicon glyphicon-info-sign hasTooltip" title="{{ discounts.sum.desc }}"></span>
-          {% endif %}
-        </div>
-        {% endif %}
-        {% if discounts.code %}
-        <!--Discount code-->
-        <div class="col-xs-7 m-l-0"><strong>{{ discounts.code.name }}:</strong></div>
-        <div class="col-xs-5 m-l-0">
-          -{{ discounts.code.difference | costDisplay }}{{ currency.symbol }}
-		  {% if discounts.code.percent %}
-		  <em>({{ discounts.code.discount }}%)</em>
-		  {% endif %}
-          {% if discounts.code.desc %}
-          <span class="glyphicon glyphicon-info-sign hasTooltip" title="{{ discounts.code.desc }}"></span>
           {% endif %}
         </div>
         {% endif %}

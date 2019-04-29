@@ -38,10 +38,12 @@
       {% endif %}
     </h4>
     
+	{% if sku %}
     <!--SKU (code)-->
     <div class="text-muted small m-t-5">
       {{ '_' | jtext: 'COM_JKASSA_SKU' }}: {{ sku }}
     </div>
+	{% endif %}
     
     {% if variants %}
     <div class="m-t-10">

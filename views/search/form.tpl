@@ -28,7 +28,8 @@
         </span>
       </div>
     </div>
-  
+    
+	{% if search_phrases %}
     <!--Filter search-->
     <div class="form-group">
       <label class="radio-inline" id="searchphraseall-lbl" for="searchphraseall">
@@ -44,6 +45,7 @@
         {{ '_' | jtext: 'COM_JKASSA_EXACT_PHRASE' }}
       </label>
     </div>
+	{% endif %}
     
     {% if searchareas %}
     <div class="form-group">

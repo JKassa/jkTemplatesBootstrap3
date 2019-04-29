@@ -164,7 +164,7 @@
                       </tr>
                       {% for product in products %}
                       <tr>
-                        <td style="border: 1px solid #D6D4D4; color: #777; padding: 5px">
+                        <td style="border: 1px solid #D6D4D4; color: #777; padding: 5px; text-align: center;">
                           <span style="color: #777; font-family: Open-sans,sans-serif; font-size: small">
                             {{ product.id }}<br>
                             {{ product.sku }}
@@ -190,6 +190,28 @@
                                 <br>
                               {% endfor %}
                             {% endif %}
+							{% if product.d_simple %}
+							  <!--Discount-->
+							  <br>
+							  <small>
+								{{ product.d_simple.name }}:
+								-{{ product.d_simple.difference | costDisplay }}{{ currency.symbol }}
+								{% if product.d_simple.symbol == '%' %}
+								<em>({{ product.d_simple.value }}%)</em>
+								{% endif %}
+							  </small>
+							{% endif %}
+							{% if product.d_coupon %}
+							  <!--Promotional code-->
+							  <br>
+							  <small>
+								{{ product.d_coupon.name }}:
+								-{{ product.d_coupon.difference | costDisplay }}{{ currency.symbol }}
+								{% if product.d_coupon.symbol == '%' %}
+								<em>({{ product.d_coupon.value }}%)</em>
+								{% endif %}
+							  </small>
+							{% endif %}
 							{% if product.attachment %}
 							  <br>
 							  {{ '_' | jtext: 'COM_JKASSA_ATTACHMENT' }}:
@@ -201,20 +223,20 @@
 							{% endif %}
                           </span>
                         </td>
-                        <td style="border: 1px solid #D6D4D4; color: #777; padding: 5px">
+                        <td style="border: 1px solid #D6D4D4; color: #777; padding: 5px; text-align: center;">
                           <span style="color: #777; font-family: Open-sans,sans-serif; font-size: small">
                             {% if product.old_cost %}
-                            <del class="text-muted">{{ product.old_cost | costDisplay }}{{ currency.symbol }}</del><br>
+                            <del>{{ product.old_cost | costDisplay }}{{ currency.symbol }}</del><br>
                             {% endif %}
                             {{ product.cost | costDisplay }}{{ currency.symbol }}
                           </span>
                         </td>
-                        <td style="border: 1px solid #D6D4D4; color: #777; padding: 5px">
+                        <td style="border: 1px solid #D6D4D4; color: #777; padding: 5px; text-align: center;">
                           <span style="color: #777; font-family: Open-sans,sans-serif; font-size: small">
                             {{ product.quantity }}
                           </span>
                         </td>
-                        <td style="border: 1px solid #D6D4D4; color: #777; padding: 5px">
+                        <td style="border: 1px solid #D6D4D4; color: #777; padding: 5px; text-align: center;">
                           <span style="color: #777; font-family: Open-sans,sans-serif; font-size: small">
                             {{ product.price | costDisplay }}{{ currency.symbol }}
                           </span>
@@ -278,7 +300,7 @@
                                 <td style="color: #333; padding: 0" width="10"></td>
                                 <td style="color: #333; padding: 0" align="right">
                                   <font size="2" face="Open-sans, sans-serif" color="#555454">
-                                    {{ discount.difference | costDisplay }}{{ currency.symbol }}
+                                    -{{ discount.difference | costDisplay }}{{ currency.symbol }}
                                   </font>
                                 </td>
                                 <td style="color: #333; padding: 0" width="10"></td>

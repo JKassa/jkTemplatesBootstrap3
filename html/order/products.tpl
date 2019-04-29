@@ -10,15 +10,15 @@
         {{ '_' | jtext: 'COM_JKASSA_GRID_TITLE' }}
       </th>
       <!--Price (per 1 unit)-->
-      <th class="text-center hidden-phone">
+      <th class="text-center hidden-phone nowrap">
         {{ '_' | jtext: 'COM_JKASSA_PRICE_1' }}
       </th>
       <!--Count-->
-      <th width="1%">
+      <th width="1%" class="text-center nowrap">
         {{ '_' | jtext: 'COM_JKASSA_QUANTITY' }}
       </th>
       <!--Price-->
-      <th>
+      <th class="text-center nowrap">
         {{ '_' | jtext: 'COM_JKASSA_COST' }}
       </th>
     </tr>
@@ -28,16 +28,16 @@
     <tr>
       <!--ID/Code-->
       <td class="text-center hidden-phone">
-        {{ product.id }}
+		<small>{{ product.id }}</small>
         {% if product.id != product.sku %}
         <br />
-        {{ product.sku }}
+		<small>{{ product.sku }}</small>
         {% endif %}
       </td>
       <!--Name-->
       <td>
         {% if product.image %}
-        <div style="float: left; margin-right: 5px;">
+        <div style="float: left; margin-right: 8px;">
           <img {{ product.image | img_exists: '80x80' }} alt="{{ product.alias }}" style="max-height: 80px; max-width: 80px;" />
         </div>
         {% endif %}
@@ -74,6 +74,28 @@
           </small>
         </p>
         {% endif %}
+		{% if product.d_simple %}
+		<!--Discount-->
+		<br>
+		<small>
+		  {{ product.d_simple.name }}:
+		  -{{ product.d_simple.difference | costDisplay }}{{ currency.symbol }}
+		  {% if product.d_simple.symbol == '%' %}
+		  <em>({{ product.d_simple.value }}%)</em>
+		  {% endif %}
+		</small>
+		{% endif %}
+		{% if product.d_coupon %}
+		<!--Promotional code-->
+		<br>
+		<small>
+		  {{ product.d_coupon.name }}:
+		  -{{ product.d_coupon.difference | costDisplay }}{{ currency.symbol }}
+		  {% if product.d_coupon.symbol == '%' %}
+		  <em>({{ product.d_coupon.value }}%)</em>
+		  {% endif %}
+		</small>
+		{% endif %}
         {% if product.attachment %}
         <fieldset>
           <legend style="font-size: 16px; line-height: 26px; margin-bottom: 10px;">
@@ -94,6 +116,10 @@
       </td>
       <!--Price (per 1 unit)-->
       <td class="text-center hidden-phone">
+		{% if product.old_cost %}
+		<!--Old cost-->
+		<del>{{ product.old_cost | costDisplay }}{{ currency.symbol }}</del><br>
+		{% endif %}
         {{ product.cost | costDisplay }}{{ currency.symbol }}
       </td>
       <!--Count-->
@@ -132,7 +158,7 @@
       {{ discount.name }}:
       </td>
       <td colspan="2">
-        {{ discount.difference | costDisplay }}{{ currency.symbol }}
+        -{{ discount.difference | costDisplay }}{{ currency.symbol }}
 		{% if discount.percent %}
 		<em>({{ discount.discount }}%)</em>
 		{% endif %}

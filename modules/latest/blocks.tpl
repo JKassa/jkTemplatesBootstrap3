@@ -1,27 +1,25 @@
 <div class="mjkblock">
   <ul class="row list-unstyled">
     {% for product in products %}
-    <li itemscope itemtype="http://schema.org/Product" class="col-xs-12 col-sm-6 col-md-3">
+    <li class="col-xs-12 col-sm-6 col-md-3">
       <div class="thumbnail">
         <div style="{{ block_height }}">
           {% if product.image %}
           <div class="product-image" style="text-align: center">
-            <a itemprop="url" href="{{ product.url }}" title="{{ product.name }}">
-              <img itemprop="image" src="{{ product.image }}" alt="{{ product.alias }}" style="{{ img_height }}" />
+            <a href="{{ product.url }}" title="{{ product.name }}">
+              <img src="{{ product.image }}" alt="{{ product.alias }}" style="{{ img_height }}" />
             </a>
           </div>
           {% endif %}
           <div class="caption">
             <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">
-              <a itemprop="url" href="{{ product.url }}" title="{{ product.name }}">
-                <span itemprop="name">{{ product.name }}</span>
+              <a href="{{ product.url }}" title="{{ product.name }}">
+                {{ product.name }}
               </a>
             </div>
             {% if product.introtext %}
             <div class="m-t-5" style="font-size: 11px; line-height: 14px">
-              <span itemprop="description">
                 {{ product.introtext | truncateDesc: 35 }}
-              </span>
             </div>
             {% endif %}
             {% if product.cost and product.old_cost %}
@@ -31,11 +29,9 @@
         </div>
         <div class="caption">
           {% if product.cost %}
-          <div class="m-t-5" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <div class="m-t-5">
             <span class="cost">
-              <meta itemprop="priceCurrency" content="{{ currency.code }}">
-              {% assign options = 'dec_point,thousands_sep' | arrayCombine: '.', '*' %}
-              <span itemprop="price" content="{{ product.cost | costDisplay: options }}">{{ product.cost | costDisplay }}</span>{{ currency.symbol }}
+              <span>{{ product.cost | costDisplay }}</span>{{ currency.symbol }}
             </span>
           </div>
           {% endif %}
@@ -87,7 +83,7 @@
 			<div class="btn-group m-t-5">
 			  {% if readmore %}
 			  <!--More-->
-			  <a itemprop="url" class="btn btn-default btn-xs" href="{{ product.url }}">
+			  <a class="btn btn-default btn-xs" href="{{ product.url }}">
 				<span class="glyphicon glyphicon-circle-arrow-right"></span>
 				{% if btns == 1 %}{{ '_' | jtext: 'JGLOBAL_DESCRIPTION' }}{% endif %}
 			  </a>

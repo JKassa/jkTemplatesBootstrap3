@@ -1,32 +1,28 @@
 <ul class="list-unstyled mjklist">
   {% for product in products %}
-  <li itemscope itemtype="http://schema.org/Product">
+  <li>
     {% if product.image %}
     <div class="m-b-5">
-      <a itemprop="url" href="{{ product.url }}">
-        <img itemprop="image" src="{{ product.image }}" alt="{{ product.alias }}" style="{{ img_height }}" />
+      <a href="{{ product.url }}">
+        <img src="{{ product.image }}" alt="{{ product.alias }}" style="{{ img_height }}" />
       </a>
     </div>
     {% endif %}
-    <a itemprop="url" href="{{ product.url }}">
-      <span itemprop="name">{{ product.name }}</span>
+    <a href="{{ product.url }}">
+      {{ product.name }}
     </a>
     {% if product.introtext %}
     <div class="m-t-5" style="font-size: 11px; line-height: 14px">
-      <span itemprop="description">
         {{ product.introtext | truncateDesc: 100 }}
-      </span>
     </div>
     {% endif %}
     {% if product.cost %}
-    <div class="m-t-5" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    <div class="m-t-5">
       {% if product.old_cost %}
       <del class="text-muted">{{ product.old_cost }}{{ currency.symbol }}</del>
       {% endif %}
       <span class="cost">
-        <meta itemprop="priceCurrency" content="{{ currency.code }}">
-        {% assign options = 'dec_point,thousands_sep' | arrayCombine: '.', '*' %}
-        <span itemprop="price" content="{{ product.cost | costDisplay: options }}">{{ product.cost | costDisplay }}</span>{{ currency.symbol }}
+        <span>{{ product.cost | costDisplay }}</span>{{ currency.symbol }}
       </span>
     </div>
     {% endif %}
@@ -78,7 +74,7 @@
     <div class="btn-group m-t-5">
 	  {% if readmore %}
 	  <!--More-->
-      <a itemprop="url" class="btn btn-default btn-xs" href="{{ product.url }}">
+      <a class="btn btn-default btn-xs" href="{{ product.url }}">
         <span class="glyphicon glyphicon-circle-arrow-right"></span>
 		{% if btns == 1 %}{{ '_' | jtext: 'JGLOBAL_DESCRIPTION' }}{% endif %}
       </a>
