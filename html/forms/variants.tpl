@@ -7,7 +7,7 @@
     
     {% when 'select' %}
     <!--Drop-down list-->
-    <select data-select="variant-select" name="variant-{{ product }}-{{ variant.id }}">
+    <select data-select="variant-select" name="variant-{{ product }}-{{ variant.id }}" class="form-control" style="width: auto">
       {% for attribute in variant.attributes %}
       <option value="{{ attribute.value }}" data-attr-title="{{ attribute.title }}"{% if attribute.default %} selected{% endif %}>
         {{ attribute.value }}

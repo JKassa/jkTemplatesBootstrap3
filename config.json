@@ -77,6 +77,14 @@
 		"default":"1"
 	},
 	{
+		"name":"prod_view",
+		"type":"list",
+		"label":"FILES_JKTPL_VIEW_LABEL",
+		"description":"FILES_JKTPL_VIEW_DESC",
+		"values":{"1":"JSHOW","0":"JHIDE"},
+		"default":"1"
+	},
+	{
 		"name":"note_featured",
 		"type":"note",
 		"label":"JFEATURED"
@@ -116,6 +124,14 @@
 		"type":"list",
 		"label":"FILES_JKTPL_QUANTITY_LABEL",
 		"description":"FILES_JKTPL_QUANTITY_DESC",
+		"values":{"1":"JSHOW","0":"JHIDE"},
+		"default":"1"
+	},
+	{
+		"name":"f_prod_view",
+		"type":"list",
+		"label":"FILES_JKTPL_VIEW_LABEL",
+		"description":"FILES_JKTPL_VIEW_DESC",
 		"values":{"1":"JSHOW","0":"JHIDE"},
 		"default":"1"
 	},
