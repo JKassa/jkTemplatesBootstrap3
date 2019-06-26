@@ -2,10 +2,10 @@
   <ul class="list-unstyled center">
     {% for related in relateds %}
     <li class="col-xs-3">
-      <div class="over-wraper">
+      <div class="over-wraper" style="border-bottom:none">
         <div class="thumbnail over-wraper-long">
           <!--Product Image-->
-          <div class="product-image">
+          <div class="product-image text-center">
             <img {{ related.image | img_exists: '50x70' }} style="max-height: 70px;" alt="{{ related.alias }}" />
           </div>
           <div class="caption">
@@ -16,7 +16,7 @@
               </a>
             </h5>
             <!--SKU (code)-->
-            <div class="text-muted small m-t-5">
+            <div class="text-muted small m-t-5 text-right">
               {{ '_' | jtext: 'COM_JKASSA_SKU' }}: {{ related.sku }}
             </div>
             <!--Price the product-->
@@ -26,7 +26,9 @@
               <del class="text-muted">{{ related.old_cost }}{{ currency.symbol }}</del>
               {% endif %}
               <!--cost-->
-              {{ related.cost }}{{ currency.symbol }}
+			  <span class="cost">
+				<span>{{ related.cost }}</span>{{ currency.symbol }}
+			  </span>
             </div>
             <!--Add to cart-->
             <div class="m-t-10" >

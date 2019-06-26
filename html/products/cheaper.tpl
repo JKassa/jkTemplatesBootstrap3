@@ -73,7 +73,10 @@
           <br>
           <!--discount-->
           <div class="discount">
-            {{ '_' | jtext: 'COM_JKASSA_DISCOUNT' }} {{ cheap.discount | costDisplay }}{{ cheap.symbol }}
+            {{ '_' | jtext: 'COM_JKASSA_DISCOUNT' }} {{ cheap.difference | costDisplay }}{{ currency.symbol }}
+			{% if cheap.percent %}
+		    <small>({{ cheap.discount }}%)</small>
+		    {% endif %}
           </div>
           <!--Add to cart-->
           <div class="m-t-10">

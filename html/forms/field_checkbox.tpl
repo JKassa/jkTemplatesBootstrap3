@@ -9,10 +9,10 @@
             type="checkbox"
             id="{{ field.name }}"
             name="{{ field.name }}"
-            value="{{ field.default }}"
+            value="{{ field.values }}"
             {% if field.required %} required{% endif %}
             {% if field.readonly %} disabled{% endif %}
-            {% if field.default == field.label %} checked{% endif %}
+            {% if field.default == field.values %} checked{% endif %}
         >
         {{ value }}
         {% if field.tooltip %}
