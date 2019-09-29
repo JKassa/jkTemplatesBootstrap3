@@ -134,10 +134,13 @@
                           <p style="border-bottom: 1px solid #D6D4D4; margin: 3px 0 7px; text-transform: uppercase; font-weight: 500; font-size: 18px; padding-bottom: 10px" data-html-only="1">
                             Получите ваш персональный промо-код
                           </p>
-                          <span style="color:#777">
+						  {% if add_desc %}
+						  <p style="color:#777">{{ add_desc }}</p>
+						  {% endif %}
+                          <p style="color:#777">
                             Ваш код купона: <strong style="color:#333">{{ coupon_code }}</strong><br/>
                             Просто скопируйте и вставьте его при оплате вашего следующего заказа.
-                          </span>
+                          </p>
                         </font>
                       </td>
                       <td width="10" style="padding:7px 0">&nbsp;</td>

@@ -128,6 +128,10 @@
                 <td class="linkbelow" style="padding: 7px 0">
                   <font size="2" face="Open-sans, sans-serif" color="#555454">
                     Уведомляем вас, что "<a href="{{ product_url }}" style="color: #5e6981">{{ product_name }}</a>" доступен для покупки.
+					{% if add_desc %}
+					<br><br>
+					{{ add_desc }}
+					{% endif %}
                   </font>
                 </td>
               </tr>
