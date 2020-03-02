@@ -278,6 +278,7 @@
       Madal body for Quick view.
     {% endcomment %}
 	{% if show_view %}
+	  	{% capture selector_quick_view %}jk-quick_view-{{ product.id }}{% endcapture %}
     	{{ 'renderModal' | bootstrap3: selector_quick_view, 'modal-lg', product.name, '', '', true }}
 	{% endif %}
   </li>

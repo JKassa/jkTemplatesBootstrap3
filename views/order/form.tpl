@@ -61,6 +61,8 @@
           {% include 'html/forms/field_calendar' %}
 	    {% when 'note' %}
 		  {% include 'html/forms/field_note' %}
+	    {% when 'html' %}
+		  {% include 'html/forms/field_html' %}
       {% endcase %}
     {% endfor %}
   </fieldset>
